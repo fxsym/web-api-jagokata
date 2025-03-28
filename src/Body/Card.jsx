@@ -9,9 +9,9 @@ export default function Card() {
 
     return (
         <>
-            <div className="container mx-auto font-[Poppins]">
+            <div className="mx-auto font-[Poppins] lg:flex lg:flex-wrap lg:gap-6 justify-evenly">
                 {quotes.map((quote, index) => (
-                <div className="flex bg-sky-100 rounded-2xl shadow-lg shadow-sky-300 mb-6 overflow-hidden items-center p-6 gap-6 cursor-pointer hover:scale-110 transition-all duration-300" key={index}>
+                <div className="flex bg-sky-100 rounded-2xl shadow-lg shadow-sky-300 mb-6 overflow-hidden items-center p-6 gap-6 cursor-pointer hover:scale-110 transition-all duration-300 w-[100%] lg:w-[45%] xl:w-[30%]" key={index}>
                     <img src={quote.author.img} alt="" className="rounded-full w-25 h-25 aspect-square object-cover"/>
                     <div className="">
                         <p className="text-justify text-2xs font-[Oswald]">"{quote.quote}"</p>
