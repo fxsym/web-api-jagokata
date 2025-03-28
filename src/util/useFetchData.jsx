@@ -19,6 +19,5 @@ export default function useFetchData() {
 
     fetchData();
   }, []);
-
   return { data, error };
 }

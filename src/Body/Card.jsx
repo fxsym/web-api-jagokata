@@ -1,11 +1,14 @@
-import useFetchData from "../util/useFetchData"
+import { useQuery } from "../context/QueryContext";
+import useFetchData from "../util/useFetchData";
+import useSearchQuote from "../util/useSearchQuote";
 
 export default function Card() {
-    const {data, error} = useFetchData();
-    if (!data) return <p>Loading...</p>;
-    const quotes = data.data.quotes
-
-    console.log(quotes)
+    const {query} = useQuery()
+    const { data: initialData, error: fetchError } = useFetchData();
+    const { data: searchData, error: searchError } = useSearchQuote();
+    
+    const quotes = query ? searchData?.data?.quotes : initialData?.data?.quotes;
+    if (!quotes) return <p>Loading...</p>;
 
     return (
         <>
