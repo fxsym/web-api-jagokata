@@ -1,39 +1,25 @@
+import useFetchData from "../util/useFetchData"
+
 export default function Card() {
+    const {data, error} = useFetchData();
+    if (!data) return <p>Loading...</p>;
+    const quotes = data.data.quotes
+
+    console.log(quotes)
+
     return (
         <>
             <div className="container mx-auto font-[Poppins]">
-                <div className="flex bg-sky-100 rounded-2xl shadow-2xl shadow-black mb-6">
-                    <img src="https://picsum.photos/150/200?random=1" alt="" className="rounded-r-3xl"/>
-                    <div className="p-4">
-                        <p className="text-justify text-2xs font-[Oswald]">"Quotes Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis blanditiis perspiciatis iste quod quidem cumque minus atque excepturi quas pariatur?"</p>
-                        <p className="font-bold ">Albert Einstnei</p>
-                        <p className="font-semibold">(1879-1904)</p>
+                {quotes.map((quote, index) => (
+                <div className="flex bg-sky-100 rounded-2xl shadow-lg shadow-sky-300 mb-6 overflow-hidden items-center p-6 gap-6 cursor-pointer hover:scale-110 transition-all duration-300" key={index}>
+                    <img src={quote.author.img} alt="" className="rounded-full w-25 h-25 aspect-square object-cover"/>
+                    <div className="">
+                        <p className="text-justify text-2xs font-[Oswald]">"{quote.quote}"</p>
+                        <p className="font-bold ">{quote.author.name}</p>
+                        <p className="font-semibold">{quote.author.birth_death}</p>
                     </div>
                 </div>
-                <div className="flex bg-sky-100 rounded-2xl shadow-2xl shadow-black mb-6">
-                    <img src="https://picsum.photos/150/200?random=1" alt="" className="rounded-r-3xl"/>
-                    <div className="p-4">
-                        <p className="text-justify text-2xs font-[Oswald]">"Quotes Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis blanditiis perspiciatis iste quod quidem cumque minus atque excepturi quas pariatur?"</p>
-                        <p className="font-bold ">Albert Einstnei</p>
-                        <p className="font-semibold">(1879-1904)</p>
-                    </div>
-                </div>
-                <div className="flex bg-sky-100 rounded-2xl shadow-2xl shadow-black mb-6">
-                    <img src="https://picsum.photos/150/200?random=1" alt="" className="rounded-r-3xl"/>
-                    <div className="p-4">
-                        <p className="text-justify text-2xs font-[Oswald]">"Quotes Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis blanditiis perspiciatis iste quod quidem cumque minus atque excepturi quas pariatur?"</p>
-                        <p className="font-bold ">Albert Einstnei</p>
-                        <p className="font-semibold">(1879-1904)</p>
-                    </div>
-                </div>
-                <div className="flex bg-sky-100 rounded-2xl shadow-2xl shadow-black mb-6">
-                    <img src="https://picsum.photos/150/200?random=1" alt="" className="rounded-r-3xl"/>
-                    <div className="p-4">
-                        <p className="text-justify text-2xs font-[Oswald]">"Quotes Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis blanditiis perspiciatis iste quod quidem cumque minus atque excepturi quas pariatur?"</p>
-                        <p className="font-bold ">Albert Einstnei</p>
-                        <p className="font-semibold">(1879-1904)</p>
-                    </div>
-                </div>
+                ))}
             </div>
         </>
     )
