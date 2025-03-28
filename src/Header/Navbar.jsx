@@ -1,7 +1,7 @@
 export default function Navbar() {
     return (
         <>
-            <nav className="bg-white">
+            <nav className="bg-sky-100">
                 <div className="container flex">
                     <h1 className="mx-auto text-3xl font-[Roboto_Condensed] p-4">Render-Quotes</h1>
                     
