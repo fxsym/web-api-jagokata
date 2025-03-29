@@ -9,7 +9,7 @@ export default function useFetchData() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.allorigins.win/raw?url=https://jagokata-api.vercel.app/popular"
+          "https://jagokata-api.vercel.app/popular"
         );
         setData(response.data);
       } catch (error) {
