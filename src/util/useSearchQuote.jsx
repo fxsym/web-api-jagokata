@@ -14,7 +14,7 @@ export default function useSearchQuote() {
             setError(null); // Reset error sebelum fetch baru
         try {
             const response = await axios.get(
-            `https://jagokata-api.vercel.app/search?q=${(query)}`
+            `https://api.allorigins.win/raw?url=https://jagokata-api.vercel.app/search?q=${(query)}`
             );
             setData(response.data);
         } catch (error) {
